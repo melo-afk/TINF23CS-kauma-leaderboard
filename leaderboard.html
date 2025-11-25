@@ -850,7 +850,7 @@
             const headerRow = document.createElement("tr");
 
             // Abs. rank + language-relative rank + rest of columns
-            ["Abs. #", "Name", "Language", "Lang #",, "Runtime (s)", "LOC", "LOC / language"]
+            ["Abs. #", "Name", "Language", "Lang #",, "Runtime (s)", "LOC", "LOC / language", "Code Labels"]
             .forEach(text => {
                     const th = document.createElement("th");
                     th.textContent = text;
@@ -948,6 +948,11 @@
                     .join(", ");
                 tdLocPerLang.textContent = perLangText || "—";
                 tr.appendChild(tdLocPerLang);
+
+                // LOC total
+                const tdLabels = document.createElement("td");
+                tdLabels.textContent = entry.code_labels != null ? String(entry.code_labels) : "—";
+                tr.appendChild(tdLabels);
 
                 tbody.appendChild(tr);
             });
